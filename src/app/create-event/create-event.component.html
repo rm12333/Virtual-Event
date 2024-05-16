@@ -1,0 +1,134 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <form
+            action="/api/event/create-event"
+            [formGroup]="eventForm"
+            (ngSubmit)="onSubmit()"
+            enctype="multipart/form-data"
+            method="post"
+          >
+            <div>
+              <label for="title">Event Title:</label>
+              <input
+                type="text"
+                id="title"
+                formControlName="title"
+                class="form-control"
+              />
+              <div
+                *ngIf="
+                  eventForm.get('title')!.hasError('required')! &&
+                  eventForm.get('title')!.touched
+                "
+              >
+                Event Title is required.
+              </div>
+            </div>
+
+            <div>
+              <label for="dateAndTime">Date and Time:</label>
+              <input
+                type="datetime-local"
+                id="dateAndTime"
+                formControlName="dateAndTime"
+                class="form-control"
+              />
+              <div
+                *ngIf="
+                  eventForm.get('dateAndTime')!.hasError('required')! &&
+                  eventForm.get('dateAndTime')!.touched
+                "
+              >
+                Date and Time are required.
+              </div>
+              <div
+                *ngIf="
+                  eventForm.get('dateAndTime')!.hasError('futureDate')! &&
+                  eventForm.get('dateAndTime')!.dirty
+                "
+              >
+                Please select a future date and time.
+              </div>
+            </div>
+
+            <div>
+              <label for="duration">Duration:</label>
+              <input
+                type="text"
+                id="duration"
+                formControlName="duration"
+                class="form-control"
+              />
+              <div
+                *ngIf="
+                  eventForm.get('duration')!.hasError('required')! &&
+                  eventForm.get('duration')!.touched
+                "
+              >
+                Duration is required.
+              </div>
+            </div>
+
+            <div>
+              <label for="coverImage">Cover Image:</label>
+              <input
+                type="file"
+                accept=".jpg, .jpeg, .png, .gif"
+                id="coverImage"
+                formControlName="coverImage"
+                class="form-control"
+                (change)="onFileSelected($event)"
+              />
+              <div
+                *ngIf="
+                  eventForm.get('coverImage')!.hasError('required')! &&
+                  eventForm.get('coverImage')!.touched
+                "
+              >
+                Cover Image is required.
+              </div>
+              <div
+                *ngIf="
+                  eventForm.get('coverImage')!.hasError('invalidImageType')! &&
+                  eventForm.get('coverImage')!.dirty
+                "
+              >
+                Please select a valid image file (jpg, jpeg, png, gif).
+              </div>
+            </div>
+
+            <div>
+              <label for="registrationFee">Registration Fee:</label>
+              <input
+                type="number"
+                id="registrationFee"
+                formControlName="registrationFee"
+                class="form-control"
+              />
+              <div
+                *ngIf="
+                  eventForm.get('registrationFee')!.hasError('required')! &&
+                  eventForm.get('registrationFee')!.touched
+                "
+              >
+                Registration Fee is required.
+              </div>
+            </div>
+            <br />
+
+            <button
+              type="submit"
+              [disabled]="eventForm.invalid"
+              class="btn btn-primary"
+            >
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

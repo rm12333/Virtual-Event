@@ -1,0 +1,43 @@
+#about {
+  background: url("../../assets/images/about-bg.jpg");
+  background-size: cover;
+  overflow: hidden;
+  position: relative;
+  color: white;
+  padding: 60px 0 40px 0;
+}
+
+#about:before {
+  content: "";
+  /* background: rgba(9, 10, 31, 0.6); */
+  background: rgba(198, 16, 0, 0);
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+#about h2 {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  /* color: #fff; */
+  color: white;
+}
+
+#about h3 {
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  /* color: #fff; */
+  color: white;
+}
+
+#about p {
+  font-size: 14px;
+  margin-bottom: 20px;
+  /* color: #fff; */
+  color: white;
+}
